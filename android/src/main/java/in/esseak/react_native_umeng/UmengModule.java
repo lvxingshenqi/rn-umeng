@@ -13,7 +13,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
-import com.umeng.analytics.AnalyticsConfig;
+//import com.umeng.analytics.AnalyticsConfig;
 import com.umeng.analytics.MobclickAgent;
 
 import java.util.HashMap;
@@ -37,20 +37,22 @@ public class UmengModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void startWithAppkey(String value){
-        if (!startedWithAppkey){
-            AnalyticsConfig.setAppkey(context,value);
-            AnalyticsConfig.setChannel("android");
-            startedWithAppkey = true;
-        }
+        //新版的友盟统计通过AndroidMainfest.xml来配置
+//        if (!startedWithAppkey){
+//            AnalyticsConfig.setAppkey(context,value);
+//            AnalyticsConfig.setChannel("android");
+//            startedWithAppkey = true;
+//        }
     }
 
     @ReactMethod
     public void startWithAppkeyAndChannel(String value,String channel){
-        if (!startedWithAppkey){
-            AnalyticsConfig.setAppkey(context,value);
-            AnalyticsConfig.setChannel(channel);
-            startedWithAppkey = true;
-        }
+        //新版的友盟统计通过AndroidMainfest.xml来配置
+//        if (!startedWithAppkey){
+//            AnalyticsConfig.setAppkey(context,value);
+//            AnalyticsConfig.setChannel(channel);
+//            startedWithAppkey = true;
+//        }
     }
 
     @ReactMethod
@@ -60,7 +62,8 @@ public class UmengModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void enableEncrypt(Boolean value){
-        AnalyticsConfig.enableEncrypt(value);
+//        AnalyticsConfig.enableEncrypt(value);//6.0.0版本以前
+        MobclickAgent.enableEncrypt(value);//6.0.0版本及以后
     }
 
     @ReactMethod
